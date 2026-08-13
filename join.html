@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Join the Carer Community — Hatch Carers</title>
+<meta name="description" content="Apply to join the Hatch Carers community platform for NSW foster and kinship carers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#137146;
+    --green:#5DA569;
+    --sage:#CBE6C6;
+    --sage-tint:#EEF6EC;
+    --deep-blue:#2A5F7A;
+    --mid-blue:#97BFCC;
+    --pale-blue:#D6EFF6;
+    --warm-grey:#727A7C;
+    --ink:#1B2620;
+    --paper:#FFFFFF;
+    --line: rgba(19,113,70,0.14);
+    --max: 1160px;
+    --form-max: 760px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter','Helvetica Neue',Arial,sans-serif;
+    font-size:17px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,.display{
+    font-family:'Manrope','Century Gothic',Arial,sans-serif;
+    font-weight:800;
+    line-height:1.12;
+    letter-spacing:-0.01em;
+    margin:0;
+    color:var(--forest);
+  }
+  h3{ font-weight:600; color:var(--ink); }
+
+  p{ max-width:62ch; }
+  a{ color:inherit; }
+
+  .wrap{ max-width:var(--form-max); margin:0 auto; padding:0 32px; }
+
+  .eyebrow{
+    font-family:'Inter',sans-serif;
+    font-size:13.5px;
+    font-weight:600;
+    letter-spacing:0.02em;
+    color:var(--warm-grey);
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:18px;
+    height:2px;
+    background:var(--green);
+    display:inline-block;
+    border-radius:2px;
+  }
+
+  .skip-link{
+    position:fixed; top:-60px; left:16px; z-index:100;
+    background:var(--forest); color:#fff;
+    padding:12px 18px; border-radius:8px; font-weight:600;
+    transition:top .2s ease;
+  }
+  .skip-link:focus{ top:16px; }
+
+  :focus-visible{
+    outline:2.5px solid var(--deep-blue);
+    outline-offset:3px;
+    border-radius:3px;
+  }
+
+  header{
+    position:sticky; top:0; z-index:40;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(10px) saturate(120%);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 32px;
+    max-width:var(--max); margin:0 auto;
+    gap:24px;
+  }
+  .logo-link{ display:flex; align-items:center; }
+  .logo-link img{ height:38px; width:auto; display:block; }
+
+  .nav-links{
+    display:flex; align-items:center; gap:34px;
+    list-style:none; margin:0; padding:0;
+  }
+  .nav-links a{
+    text-decoration:none; font-size:15px; font-weight:500;
+    color:var(--ink);
+    padding:6px 2px; position:relative;
+  }
+  .nav-links a::after{
+    content:''; position:absolute; left:0; right:0; bottom:0px; height:2px;
+    background:var(--green); transform:scaleX(0); transform-origin:left;
+    transition:transform .25s ease;
+  }
+  .nav-links a:hover::after, .nav-links a[aria-current]::after{ transform:scaleX(1); }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Inter', sans-serif; font-weight:600; font-size:15px;
+    padding:12px 22px; border-radius:8px;
+    text-decoration:none; cursor:pointer; border:1.5px solid transparent;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{ background:var(--forest); color:#fff; }
+  .btn-primary:hover{ background:#0E5C39; transform:translateY(-1px); }
+  .btn-ghost{ border-color:var(--line); color:var(--ink); background:transparent; }
+  .btn-ghost:hover{ border-color:var(--forest); }
+  .btn:disabled{ opacity:0.6; cursor:not-allowed; transform:none; }
+
+  .nav-cta{ display:flex; align-items:center; gap:12px; }
+  .nav-toggle{ display:none; }
+
+  .page-hero{
+    position:relative;
+    padding:64px 32px 56px;
+    background:var(--sage-tint);
+    border-bottom:1px solid var(--line);
+  }
+  .page-hero-inner{
+    max-width:var(--form-max); margin:0 auto;
+  }
+  .page-hero h1{
+    font-size:clamp(30px, 4vw, 42px);
+    max-width:16ch;
+    margin-top:18px;
+  }
+  .page-hero p{
+    margin:18px 0 0; font-size:17.5px; color:var(--ink); max-width:52ch; line-height:1.6;
+  }
+
+  section.form-section{ padding:56px 32px 96px; }
+  .form-heading{ margin-bottom:8px; }
+  .form-subhead{ color:var(--warm-grey); font-size:15.5px; margin:8px 0 32px; }
+
+  form{
+    background:var(--sage-tint); border:1px solid var(--line); border-radius:16px;
+    padding:36px;
+  }
+  fieldset{ border:none; padding:0; margin:0 0 32px; }
+  fieldset:last-of-type{ margin-bottom:0; }
+  legend{ font-family:'Manrope',sans-serif; font-weight:700; font-size:15px; color:var(--forest); padding:0 0 16px; width:100%; }
+  .field{ margin-bottom:18px; display:flex; flex-direction:column; gap:8px; }
+  .field:last-child{ margin-bottom:0; }
+  .field label{ font-size:13.5px; font-weight:600; color:var(--ink); }
+  .field .hint{ font-size:12.5px; color:var(--warm-grey); font-weight:400; margin-top:-4px; line-height:1.5; }
+  .field input[type="text"], .field input[type="email"], .field input[type="tel"], .field input[type="date"], .field textarea{
+    font-family:'Inter',sans-serif; font-size:15px; padding:12px 14px; border-radius:8px;
+    border:1px solid var(--line); background:#fff; color:var(--ink); width:100%;
+  }
+  .field input:focus, .field textarea:focus{ outline:none; border-color:var(--forest); }
+  .field textarea{ min-height:90px; resize:vertical; }
+  .radio-row, .checkbox-row{ display:flex; gap:20px; flex-wrap:wrap; }
+  .radio-row label, .checkbox-row label{ display:flex; align-items:center; gap:8px; font-weight:500; font-size:15px; cursor:pointer; }
+  .conditional{ border-left:2px solid var(--sage); padding-left:18px; margin-top:14px; display:none; }
+  .conditional.is-visible{ display:block; }
+
+  #form-status{ font-size:14.5px; font-weight:600; margin-top:16px; min-height:20px; color:var(--forest); }
+  #form-status[data-state="error"]{ color:#B3261E; }
+  .form-note{ font-size:13px; color:var(--warm-grey); margin-top:14px; }
+
+  footer{
+    padding:44px 32px 36px; border-top:1px solid var(--line);
+  }
+  .footer-inner{
+    max-width:var(--max); margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    flex-wrap:wrap; gap:16px;
+  }
+  .footer-mission{
+    font-family:'Manrope', sans-serif; font-weight:700; color:var(--forest); font-size:15px;
+  }
+  .footer-meta{ font-size:13px; color:var(--warm-grey); display:flex; gap:20px; flex-wrap:wrap; }
+  .footer-meta a{ text-decoration:none; font-weight:600; color:var(--warm-grey); }
+  .footer-meta a:hover{ color:var(--forest); }
+
+  @media (max-width: 760px){
+    .nav-links{
+      position:fixed; inset:64px 16px auto 16px;
+      background:var(--paper); border:1px solid var(--line); border-radius:14px;
+      flex-direction:column; align-items:flex-start; padding:18px 22px; gap:16px;
+      box-shadow:0 20px 50px -25px rgba(19,113,70,0.35);
+      transform:translateY(-12px); opacity:0; pointer-events:none;
+      transition:transform .2s ease, opacity .2s ease;
+    }
+    .nav-links.is-open{ transform:translateY(0); opacity:1; pointer-events:auto; }
+    .nav-cta .btn-ghost{ display:none; }
+    .nav-toggle{
+      display:flex; align-items:center; justify-content:center;
+      width:40px; height:40px; border-radius:8px; border:1px solid var(--line);
+      background:transparent; cursor:pointer;
+    }
+    .nav-toggle svg{ width:20px; height:20px; stroke:var(--ink); }
+    .page-hero{ padding:48px 20px 40px; }
+    section.form-section{ padding:40px 20px 64px; }
+    .wrap, .nav, .page-hero-inner{ padding-left:20px; padding-right:20px; }
+    form{ padding:24px; }
+    .radio-row, .checkbox-row{ gap:14px; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header>
+  <nav class="nav">
+    <a href="index.html" class="logo-link" aria-label="Hatch Carers, home">
+      <img src="assets/hatch-logo.png" alt="Hatch Carers">
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#insight">Why independence matters</a></li>
+      <li><a href="index.html#positioning">What we are</a></li>
+      <li><a href="index.html#audiences">Partners</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+
+    <div class="nav-cta">
+      <a href="index.html#contact" class="btn btn-ghost">Get in touch</a>
+      <a href="#carerForm" class="btn btn-primary" aria-current="page">Join the community</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <span class="eyebrow">Join the community</span>
+      <h1>Join the carer community platform.</h1>
+      <p>
+        This is the same application that goes to our team — filled in here, it lands in
+        exactly the same place as if you'd filled it in on our platform directly.
+      </p>
+    </div>
+  </section>
+
+  <section class="form-section">
+    <div class="wrap">
+      <h2 class="form-heading">Join The Forum</h2>
+
+      <form id="carerForm" novalidate>
+
+        <fieldset>
+          <legend>Your details</legend>
+          <div class="field">
+            <label for="firstName">First name</label>
+            <input type="text" id="firstName" name="first_name_03a4" autocomplete="given-name" required>
+          </div>
+          <div class="field">
+            <label for="lastName">Last name</label>
+            <input type="text" id="lastName" name="last_name_f755" autocomplete="family-name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email_692d" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone_8a7b" autocomplete="tel">
+          </div>
+          <div class="field">
+            <label for="postcode">Postcode</label>
+            <input type="text" id="postcode" name="postcode" inputmode="numeric" maxlength="4">
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Authorisation</legend>
+          <div class="field">
+            <label>Authorised NSW Foster / Kinship Carer</label>
+            <div class="radio-row">
+              <label><input type="radio" name="authorised_nsw_carer" value="YES" required> YES</label>
+              <label><input type="radio" name="authorised_nsw_carer" value="NO" required> NO</label>
+            </div>
+          </div>
+
+          <div class="conditional" id="notAuthorisedBlock">
+            <div class="field">
+              <label for="notAuthorisedInfo">If not authorized, please provide info about your interest in joining our community:</label>
+              <textarea id="notAuthorisedInfo" name="if_not_authorised_who_are_you" rows="3"></textarea>
+            </div>
+          </div>
+
+          <div class="conditional" id="authorisedBlock">
+            <div class="field">
+              <label for="authorisedDate">When were you authorised?</label>
+              <input type="date" id="authorisedDate" name="when_were_you_authorised">
+            </div>
+            <div class="field">
+              <label for="agency">Agency</label>
+              <input type="text" id="agency" name="agency">
+            </div>
+            <div class="field">
+              <label><input type="checkbox" id="proofAvailable" name="form_field_a9ad"> If requested, can you provide proof of authorisation? (ie placement letter)</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Sector employment</legend>
+          <div class="field">
+            <label>Are you currently employed by DCJ or a non-government OOHC provider?</label>
+            <div class="radio-row">
+              <label><input type="radio" name="employedDcjChoice" id="employedDcjYes" value="Yes"> Yes</label>
+              <label><input type="radio" name="employedDcjChoice" id="employedDcjNo" value="No"> No</label>
+            </div>
+            <p class="hint">Hatch Carers is for <em>ALL</em> foster and kinship carers. If you are both carer and OOHC worker you add important value to our community. However, due to potential conflicts of interest, we require members of this platform who <em>also</em> work in the sector to disclose additional information. If you answered YES to the above question please complete the questions below:</p>
+          </div>
+
+          <div class="conditional" id="dcjBlock">
+            <div class="field">
+              <label for="employer">Who is your employer?</label>
+              <input type="text" id="employer" name="who_is_your_employer">
+            </div>
+            <div class="field">
+              <label for="roleTitle">What is your role title?</label>
+              <input type="text" id="roleTitle" name="what_is_your_role_title">
+            </div>
+            <div class="field">
+              <label for="roleCapacity">Do you work with foster and kinship carers in your role? If so, in what capacity?</label>
+              <textarea id="roleCapacity" name="do_you_work_with_foster_and_kinship_carers_in_your_role_if_so_in" rows="3"></textarea>
+            </div>
+          </div>
+        </fieldset>
+
+        <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+        <p class="form-note">This form is a working front end only for now — it submits directly to the same place as the platform's own form.</p>
+        <p id="form-status" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-mission">Care for the Carers who Care for the Kids.</span>
+    <span class="footer-meta">
+      <span>© <span id="year"></span> Hatch Project</span>
+      <a href="mailto:support@hatchcarers.com.au">support@hatchcarers.com.au</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('is-open');
+    navToggle.setAttribute('aria-expanded', String(open));
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('is-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  const WIX_ENDPOINT = "https://www.hatchcarers.com.au/_functions/submitCarerApplication";
+
+  function bindRadioToggle(name, showValueMap) {
+    document.querySelectorAll(`input[name="${name}"]`).forEach(input => {
+      input.addEventListener('change', () => {
+        Object.entries(showValueMap).forEach(([value, el]) => {
+          el.classList.toggle('is-visible', input.value === value && input.checked);
+        });
+      });
+    });
+  }
+  bindRadioToggle('authorised_nsw_carer', {
+    'YES': document.getElementById('authorisedBlock'),
+    'NO': document.getElementById('notAuthorisedBlock')
+  });
+
+  const dcjBlock = document.getElementById('dcjBlock');
+  document.querySelectorAll('input[name="employedDcjChoice"]').forEach(input => {
+    input.addEventListener('change', () => {
+      dcjBlock.classList.toggle('is-visible', input.value === 'Yes' && input.checked);
+    });
+  });
+
+  const form = document.getElementById('carerForm');
+  const status = document.getElementById('form-status');
+  const submitBtn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    status.dataset.state = '';
+    status.textContent = 'Submitting…';
+
+    const fd = new FormData(form);
+    const payload = {
+      first_name_03a4: fd.get('first_name_03a4') || '',
+      last_name_f755: fd.get('last_name_f755') || '',
+      email_692d: fd.get('email_692d') || '',
+      phone_8a7b: fd.get('phone_8a7b') || '',
+      postcode: fd.get('postcode') || '',
+      authorised_nsw_carer: fd.get('authorised_nsw_carer') || '',
+      if_not_authorised_who_are_you: fd.get('if_not_authorised_who_are_you') || '',
+      when_were_you_authorised: fd.get('when_were_you_authorised') || '',
+      agency: fd.get('agency') || '',
+      form_field_a9ad: document.getElementById('proofAvailable').checked,
+      are_you_currently_employed_by_dcj_or_a_non_government_oohc_provi:
+        document.getElementById('employedDcjYes').checked ? ['Yes'] : [],
+      who_is_your_employer: fd.get('who_is_your_employer') || '',
+      what_is_your_role_title: fd.get('what_is_your_role_title') || '',
+      do_you_work_with_foster_and_kinship_carers_in_your_role_if_so_in: fd.get('do_you_work_with_foster_and_kinship_carers_in_your_role_if_so_in') || ''
+    };
+
+    try {
+      const res = await fetch(WIX_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error('Request failed: ' + res.status);
+      status.dataset.state = 'success';
+      status.textContent = "Thanks — your application has been submitted.";
+      form.reset();
+      document.querySelectorAll('.conditional').forEach(el => el.classList.remove('is-visible'));
+    } catch (err) {
+      status.dataset.state = 'error';
+      status.textContent = "Something went wrong submitting this — please email support@hatchcarers.com.au directly for now.";
+      console.error(err);
+    } finally {
+      submitBtn.disabled = false;
+    }
+  });
+</script>
+
+</body>
+</html>
