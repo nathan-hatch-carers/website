@@ -195,6 +195,19 @@
     transform:rotate(-4deg) scale(1.22);
   }
 
+  /* ---------- video ---------- */
+  .video-section{ background:var(--sage-tint); border-bottom:1px solid var(--line); }
+  .video-frame{
+    max-width:900px; margin:44px auto 0;
+    border-radius:16px; overflow:hidden;
+    border:1px solid var(--line);
+    box-shadow:0 24px 50px -28px rgba(19,113,70,0.4);
+    background:#000;
+  }
+  .video-frame video{
+    display:block; width:100%; height:auto; max-height:60vh;
+  }
+
   /* ---------- section shells ---------- */
   section{ padding:84px 0; }
   .section-head{ max-width:640px; margin:0 0 44px; }
@@ -411,6 +424,24 @@
             <img src="assets/hatch-hero-photo.jpg" alt="">
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO -->
+  <section class="video-section reveal">
+    <div class="wrap" style="text-align:center;">
+      <span class="eyebrow" style="justify-content:center;">See it in their own words</span>
+      <h2>Hear directly from the community.</h2>
+      <div class="video-frame">
+        <video
+          controls
+          preload="metadata"
+          playsinline
+          src="https://video.wixstatic.com/video/26561e_5443d78ac1c54747a25dea208c7080bf/1080p/mp4/file.mp4">
+          Your browser doesn't support embedded video.
+          <a href="https://video.wixstatic.com/video/26561e_5443d78ac1c54747a25dea208c7080bf/1080p/mp4/file.mp4">Watch it here instead.</a>
+        </video>
       </div>
     </div>
   </section>
