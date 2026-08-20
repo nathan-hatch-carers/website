@@ -126,6 +126,11 @@
     white-space:nowrap;
   }
   .btn-primary{ background:var(--forest); color:#fff; }
+  .btn-cta{
+    font-weight:700; padding:12px 26px;
+    box-shadow:0 6px 16px -6px rgba(19,113,70,0.55);
+  }
+  .btn-cta:hover{ box-shadow:0 10px 22px -6px rgba(19,113,70,0.6); }
   .btn-primary:hover{ background:#0E5C39; transform:translateY(-1px); }
   .btn-ghost{ border-color:var(--line); color:var(--ink); background:transparent; }
   .btn-ghost:hover{ border-color:var(--forest); }
@@ -207,7 +212,6 @@
       transition:transform .2s ease, opacity .2s ease;
     }
     .nav-links.is-open{ transform:translateY(0); opacity:1; pointer-events:auto; }
-    .nav-cta .btn-ghost{ display:none; }
     .nav-toggle{
       display:flex; align-items:center; justify-content:center;
       width:40px; height:40px; border-radius:8px; border:1px solid var(--line);
@@ -238,16 +242,11 @@
 
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html">Home</a></li>
-      <li><a href="index.html#insight">Why independence matters</a></li>
-      <li><a href="index.html#positioning">What we are</a></li>
-      <li><a href="index.html#audiences">Partners</a></li>
       <li><a href="team.html">Our Team</a></li>
-      <li><a href="index.html#contact">Contact</a></li>
     </ul>
 
     <div class="nav-cta">
-      <a href="index.html#contact" class="btn btn-ghost">Get in touch</a>
-      <a href="#carerForm" class="btn btn-primary" aria-current="page">Join the community</a>
+      <a href="#carerForm" class="btn btn-primary btn-cta" aria-current="page">Join the community</a>
     </div>
   </nav>
 </header>

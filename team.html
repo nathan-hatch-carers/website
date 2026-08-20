@@ -126,6 +126,11 @@
     white-space:nowrap;
   }
   .btn-primary{ background:var(--forest); color:#fff; }
+  .btn-cta{
+    font-weight:700; padding:12px 26px;
+    box-shadow:0 6px 16px -6px rgba(19,113,70,0.55);
+  }
+  .btn-cta:hover{ box-shadow:0 10px 22px -6px rgba(19,113,70,0.6); }
   .btn-primary:hover{ background:#0E5C39; transform:translateY(-1px); }
   .btn-ghost{ border-color:var(--line); color:var(--ink); background:transparent; }
   .btn-ghost:hover{ border-color:var(--forest); }
@@ -171,7 +176,6 @@
     margin:12px 0; padding-left:14px; border-left:2px solid var(--sage);
     font-style:italic; color:var(--ink); font-size:14.5px; line-height:1.6;
   }
-  .team-card.no-bio{ align-items:center; }
 
   /* ---------- volunteers ---------- */
   .volunteers{ background:var(--sage-tint); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
@@ -211,7 +215,6 @@
       transition:transform .2s ease, opacity .2s ease;
     }
     .nav-links.is-open{ transform:translateY(0); opacity:1; pointer-events:auto; }
-    .nav-cta .btn-ghost{ display:none; }
     .nav-toggle{
       display:flex; align-items:center; justify-content:center;
       width:40px; height:40px; border-radius:8px; border:1px solid var(--line);
@@ -242,16 +245,11 @@
 
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html">Home</a></li>
-      <li><a href="index.html#insight">Why independence matters</a></li>
-      <li><a href="index.html#positioning">What we are</a></li>
-      <li><a href="index.html#audiences">Partners</a></li>
       <li><a href="team.html" aria-current="page">Our Team</a></li>
-      <li><a href="index.html#contact">Contact</a></li>
     </ul>
 
     <div class="nav-cta">
-      <a href="index.html#contact" class="btn btn-ghost">Get in touch</a>
-      <a href="join.html" class="btn btn-primary">Join the community</a>
+      <a href="join.html" class="btn btn-primary btn-cta">Join the community</a>
     </div>
   </nav>
 </header>
@@ -340,11 +338,31 @@
           </div>
         </article>
 
-        <article class="team-card no-bio reveal">
+        <article class="team-card reveal">
           <img class="team-photo" src="assets/team/ken.jpg" alt="Ken Raison">
           <div>
             <h3 class="team-name">Ken Raison</h3>
             <span class="team-title">Director, Volunteer</span>
+            <div class="team-bio">
+              <p>
+                My wife and I have been carers for a long time (23 years) with a full
+                provision of care types and I have provided personal advocacy for carers
+                across the state for 20 years. That advocacy experience wears many caps —
+                sometimes you are the knowledge expert, sometimes you are the counsellor,
+                the consultant, the writer and the voice of the carer so that both the carer
+                and their children in care are afforded the opportunities they are entitled
+                to have.
+              </p>
+              <p>
+                This experience together with my many tertiary qualifications places me in a
+                unique position to assist other carers and hence why I've joined Hatch
+                Carers — an equally unique group of experienced carers and professionals
+                with similar ethos.
+              </p>
+              <p>
+                Kids and their carers are my Raison d'être.
+              </p>
+            </div>
           </div>
         </article>
 
