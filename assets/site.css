@@ -247,6 +247,7 @@ section{ padding:84px 0; }
 
 /* ---------- insight chain (dark) ---------- */
 .chain-dark{ background:var(--forest); color:#fff; }
+.chain-dark h2{ color:#fff; }
 .chain-dark .eyebrow{ color:var(--sage); }
 .chain-dark .eyebrow::before{ background:var(--sage); }
 .chain-dark .section-head p{ color:rgba(255,255,255,0.82); }
