@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partners — Hatch Carers</title>
+<meta name="description" content="How government, philanthropy and corporate partners can work with Hatch Carers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  .partner-detail{ display:grid; gap:56px; margin-top:12px; }
+  .partner-row{ display:grid; grid-template-columns:1fr 1.4fr; gap:40px; align-items:start; }
+  .partner-row h3{ font-size:21px; margin:10px 0 12px; }
+  .partner-row p{ font-size:15.5px; color:var(--warm-grey); }
+  @media (max-width:900px){ .partner-row{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header>
+  <nav class="nav">
+    <a href="index.html" class="logo-link" aria-label="Hatch Carers, home">
+      <img src="assets/hatch-logo.png" alt="Hatch Carers">
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="for-carers.html">For Carers</a></li>
+      <li><a href="insights.html">Insights</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="partners.html" aria-current="page">Partners</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="join.html" class="btn btn-primary btn-cta">Join Hatch</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <span class="eyebrow">Partners</span>
+      <h1>Help strengthen the community around carers.</h1>
+      <p>
+        Hatch is independent enough to hear the carer reality safely, and connected
+        enough to help the system learn from it. The institutional value comes from the
+        community — not the other way around.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="partner-detail">
+
+        <div class="partner-row reveal">
+          <div>
+            <span class="eyebrow" style="color:var(--deep-blue);">Government &amp; sector</span>
+            <h3>Understand carer experience</h3>
+          </div>
+          <div>
+            <p>
+              The NSW out-of-home-care system is being rebuilt in real time, and the
+              carer voice has been named as a missing input. Hatch is independent enough
+              to surface the carer reality safely, and constructive enough to be a partner
+              in the rebuild rather than a critic outside it.
+            </p>
+            <p>
+              We work with government and sector bodies on understanding what's actually
+              happening for carers, and on the conditions that support sustainable care —
+              alongside existing services and peak bodies, never in their place.
+            </p>
+          </div>
+        </div>
+
+        <div class="partner-row reveal">
+          <div>
+            <span class="eyebrow" style="color:var(--deep-blue);">Philanthropy</span>
+            <h3>Build independent infrastructure</h3>
+          </div>
+          <div>
+            <p>
+              Carer wellbeing is the upstream lever in a multi-billion-dollar system. When
+              carers stay, placements stabilise. Philanthropic support helps fund the
+              platform, the community team, and the research that keeps Hatch independent
+              of government and service-provider funding — the condition that makes carer
+              trust possible in the first place.
+            </p>
+          </div>
+        </div>
+
+        <div class="partner-row reveal">
+          <div>
+            <span class="eyebrow" style="color:var(--deep-blue);">Corporate partners</span>
+            <h3>Support practical initiatives</h3>
+          </div>
+          <div>
+            <p>
+              Corporate partners help fund practical resources and research that improve
+              the everyday experience of NSW foster and kinship carers — support that
+              aligns with values like family wellbeing and community resilience, delivered
+              through a genuine, structured partnership rather than a one-off sponsorship.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--sage-tint); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="wrap-narrow">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Start a conversation</span>
+        <h2>The first conversation can be a coffee.</h2>
+        <p>Tell us a little about what you're working on, and we'll find the right place to start.</p>
+      </div>
+      <div style="text-align:center;">
+        <a href="mailto:support@hatchcarers.com.au" class="btn btn-primary btn-cta">Email support@hatchcarers.com.au</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-mission">Care for the Carers who Care for the Kids.</span>
+    <span class="footer-meta">
+      <span>© <span id="year"></span> Hatch Project</span>
+      <a href="mailto:support@hatchcarers.com.au">support@hatchcarers.com.au</a>
+    </span>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Carers — Hatch Carers</title>
+<meta name="description" content="What Hatch offers NSW foster and kinship carers, how the community works, and how to join.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  .step-list{ counter-reset:step; margin-top:44px; display:grid; gap:20px; }
+  .step{ display:flex; gap:20px; align-items:flex-start; }
+  .step-num{
+    counter-increment:step; flex:none; width:36px; height:36px; border-radius:50%;
+    background:var(--forest); color:#fff; display:flex; align-items:center; justify-content:center;
+    font-family:'Manrope',sans-serif; font-weight:700; font-size:15px;
+  }
+  .step-num::before{ content:counter(step); }
+  .step h3{ font-size:16.5px; margin-bottom:6px; }
+  .step p{ font-size:15px; color:var(--warm-grey); margin:0; }
+
+  .faq{ margin-top:16px; }
+  .faq-item{ border-bottom:1px solid var(--line); padding:20px 0; }
+  .faq-item h3{ font-size:16.5px; margin-bottom:8px; }
+  .faq-item p{ font-size:15px; color:var(--warm-grey); margin:0; }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header>
+  <nav class="nav">
+    <a href="index.html" class="logo-link" aria-label="Hatch Carers, home">
+      <img src="assets/hatch-logo.png" alt="Hatch Carers">
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="for-carers.html" aria-current="page">For Carers</a></li>
+      <li><a href="insights.html">Insights</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="partners.html">Partners</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="join.html" class="btn btn-primary btn-cta">Join Hatch</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <span class="eyebrow">For carers</span>
+      <h1>A community that's actually yours.</h1>
+      <p>
+        Hatch is built for NSW foster and kinship carers — people doing skilled, demanding
+        work who deserve somewhere they can talk openly with people who understand it.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">What Hatch offers</span>
+        <h2>What you get here.</h2>
+      </div>
+      <div class="chapter-grid">
+        <div class="chapter-card reveal">
+          <h3>Connect</h3>
+          <p>Meet other carers who understand what the role is actually like, day to day.</p>
+        </div>
+        <div class="chapter-card reveal">
+          <h3>Support</h3>
+          <p>Ask questions, share the hard moments, and get support from people who've navigated it before you.</p>
+        </div>
+        <div class="chapter-card reveal">
+          <h3>Knowledge</h3>
+          <p>Learn from the lived experience of carers who've faced the situation you're facing now.</p>
+        </div>
+        <div class="chapter-card reveal">
+          <h3>Voice</h3>
+          <p>Add your experience to a stronger, more accurate picture of what carers actually need.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--sage-tint); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="wrap-narrow">
+      <div class="section-head reveal">
+        <span class="eyebrow">Independence &amp; safety</span>
+        <h2>Can I actually talk here?</h2>
+        <p>
+          Hatch is independent of the organisations responsible for your care arrangements —
+          not government funded, not service-provider embedded. That's what lets you talk
+          with people who understand the role without it touching a placement or a file.
+        </p>
+        <p style="margin-top:16px;">
+          It also means Hatch is complementary, not adversarial: we work alongside
+          government and service providers, not instead of them. The community exists
+          for carers first. Anything Hatch learns from that community is a by-product of
+          trust, never the reason carers are invited in.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap-narrow">
+      <div class="section-head reveal">
+        <span class="eyebrow">Joining Hatch</span>
+        <h2>How it works.</h2>
+        <p>A short application, then you're in.</p>
+      </div>
+
+      <div class="step-list reveal">
+        <div class="step">
+          <div class="step-num"></div>
+          <div>
+            <h3>Tell us a bit about yourself</h3>
+            <p>Your name, contact details, and postcode — the same short form our team reviews directly.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"></div>
+          <div>
+            <h3>Confirm you're an authorised NSW carer</h3>
+            <p>Hatch is for authorised foster, kinship, grandparent and therapeutic carers across NSW. If you're not yet authorised, tell us where you're at and we'll point you in the right direction.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"></div>
+          <div>
+            <h3>Join the community</h3>
+            <p>Once you're confirmed, you're part of the community — no case files, no caseworkers in the room.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:36px;">
+        <a href="join.html" class="btn btn-primary btn-cta">Join the community</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--sage-tint); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="wrap-narrow">
+      <div class="section-head reveal">
+        <span class="eyebrow">Questions</span>
+        <h2>A few things carers ask.</h2>
+      </div>
+
+      <div class="faq reveal">
+        <div class="faq-item">
+          <h3>Is Hatch really independent?</h3>
+          <p>Yes. Hatch holds no funding or contracts from any government department or service provider that would make carers hold back. That's the structural condition for trust.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Who can join?</h3>
+          <p>Authorised NSW foster, kinship, grandparent and therapeutic carers. Hatch holds all carer types under one roof, and works alongside ACCOs, AbSec and SNAICC — never in their place.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Will anything I say get back to my agency or caseworker?</h3>
+          <p>Hatch is a space that's fully your own, independent of the organisations responsible for your care arrangements. That independence is the point.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Is there an app?</h3>
+          <p>A native app is in development. In the meantime, the community runs on our existing platform.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-simple reveal">
+        <span class="eyebrow">Still have a question?</span>
+        <h2>Get in touch.</h2>
+        <a href="mailto:support@hatchcarers.com.au" class="btn btn-primary">Email support@hatchcarers.com.au</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-mission">Care for the Carers who Care for the Kids.</span>
+    <span class="footer-meta">
+      <span>© <span id="year"></span> Hatch Project</span>
+      <a href="mailto:support@hatchcarers.com.au">support@hatchcarers.com.au</a>
+    </span>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>
