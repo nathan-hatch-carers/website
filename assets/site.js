@@ -30,16 +30,4 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     revealEls.forEach(el => el.classList.add('is-visible'));
   }
-
-  // Hero video: click-to-play blob (avoids autoplay + keeps the poster calm)
-  const heroPlay = document.getElementById('heroPlay');
-  const heroVideo = document.getElementById('heroVideo');
-  if (heroPlay && heroVideo) {
-    heroPlay.addEventListener('click', () => {
-      heroVideo.play();
-      heroPlay.setAttribute('data-playing', 'true');
-    });
-    heroVideo.addEventListener('pause', () => heroPlay.setAttribute('data-playing', 'false'));
-    heroVideo.addEventListener('ended', () => heroPlay.setAttribute('data-playing', 'false'));
-  }
 });

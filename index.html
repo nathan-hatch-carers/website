@@ -51,8 +51,31 @@
     transform:rotate(-4deg) scale(1.22);
   }
 
-  /* ---------- video section ---------- */
-  .video-frame{ max-width:900px; margin:44px auto 0; }
+  /* ---------- feature video: the human heart of the page ---------- */
+  .feature-video{
+    background:var(--ink);
+    padding:76px 0 84px;
+  }
+  .feature-video .eyebrow{ color:var(--sage); }
+  .feature-video .eyebrow::before{ background:var(--sage); }
+  .feature-video h2{ color:#fff; margin-top:12px; }
+  .feature-video-stage{
+    width:calc(100% - 48px);
+    max-width:1400px;
+    margin:44px auto 0;
+    aspect-ratio:16/9;
+    border-radius:22px;
+    overflow:hidden;
+    background:#000;
+    box-shadow:0 50px 90px -45px rgba(0,0,0,0.6);
+  }
+  .feature-video-stage video{
+    display:block; width:100%; height:100%; object-fit:cover;
+  }
+  @media (max-width:700px){
+    .feature-video-stage{ width:100%; border-radius:0; box-shadow:none; }
+    .feature-video{ padding:56px 0 64px; }
+  }
 
   @media (max-width: 980px){
     .hero-grid{ grid-template-columns:1fr; }
@@ -122,20 +145,20 @@
   </section>
 
   <!-- ================= VIDEO ================= -->
-  <section class="video-section reveal" style="background:var(--sage-tint); border-bottom:1px solid var(--line);">
-    <div class="wrap" style="text-align:center;">
+  <section class="feature-video">
+    <div class="wrap-narrow" style="text-align:center;">
       <span class="eyebrow" style="justify-content:center;">See it in their own words</span>
       <h2>Hear directly from the community.</h2>
-      <div class="video-frame">
-        <video
-          controls
-          preload="metadata"
-          playsinline
-          src="https://video.wixstatic.com/video/26561e_5443d78ac1c54747a25dea208c7080bf/1080p/mp4/file.mp4">
-          Your browser doesn't support embedded video.
-          <a href="https://video.wixstatic.com/video/26561e_5443d78ac1c54747a25dea208c7080bf/1080p/mp4/file.mp4">Watch it here instead.</a>
-        </video>
-      </div>
+    </div>
+    <div class="feature-video-stage reveal">
+      <video
+        controls
+        preload="metadata"
+        playsinline
+        src="https://video.wixstatic.com/video/26561e_5443d78ac1c54747a25dea208c7080bf/1080p/mp4/file.mp4">
+        Your browser doesn't support embedded video.
+        <a href="https://video.wixstatic.com/video/26561e_5443d78ac1c54747a25dea208c7080bf/1080p/mp4/file.mp4">Watch it here instead.</a>
+      </video>
     </div>
   </section>
 
@@ -176,16 +199,17 @@
         <span class="eyebrow">Why Hatch is different</span>
         <h2>A space that belongs to carers.</h2>
         <p>
-          Hatch is independent of the organisations responsible for care arrangements.
-          That matters because carers need somewhere they can talk openly, with people
-          who understand the role — without it touching a placement or a file.
+          Hatch is independently governed, which is what lets carers talk openly with
+          people who understand the role — without it touching a placement or a file.
+          What you share inside the community stays there; only anonymised patterns
+          ever leave it.
         </p>
       </div>
 
       <div class="pillar-grid">
         <div class="pillar reveal">
-          <h3>Independence</h3>
-          <p>Not government funded. Not service-provider embedded. A space that's fully carers' own.</p>
+          <h3>Independently governed</h3>
+          <p>Government and sector partners can support Hatch, but none of them control the community, what carers can say, or who gets access to it.</p>
         </div>
         <div class="pillar reveal">
           <h3>Shaped by carers</h3>
@@ -208,25 +232,40 @@
     <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow">What this makes possible</span>
-        <h2>When carers connect, something bigger happens.</h2>
+        <h2>When carers talk, everyone learns.</h2>
         <p>
-          Every conversation adds to a clearer picture of what helps carers keep caring
-          — and what makes the role harder. Hatch exists for carers first. Insight is
-          something that grows out of a trusted community, not the reason carers are
-          invited into it.
+          Carers come to Hatch to connect, ask questions and share what they know.
+          Those conversations help other carers immediately. Over time, they also help
+          us understand what carers need and improve the support we provide — and,
+          always anonymised, surface patterns that can help the sector understand
+          carers better too.
         </p>
       </div>
 
-      <div class="flow reveal">
-        <div class="flow-step"><span class="flow-index">1</span><p>Carers connect</p></div>
-        <div class="flow-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-        <div class="flow-step"><span class="flow-index">2</span><p>Carers share experience</p></div>
-        <div class="flow-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-        <div class="flow-step"><span class="flow-index">3</span><p>Patterns emerge</p></div>
-        <div class="flow-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-        <div class="flow-step"><span class="flow-index">4</span><p>Collective knowledge develops</p></div>
-        <div class="flow-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-        <div class="flow-step"><span class="flow-index">5</span><p>Carer voice is heard</p></div>
+      <div class="loop-wrap reveal">
+        <div class="flow">
+          <div class="flow-step"><span class="flow-index">1</span><p>Carers connect &amp; share</p></div>
+          <div class="flow-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          <div class="flow-step"><span class="flow-index">2</span><p>Community knowledge grows</p></div>
+          <div class="flow-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          <div class="flow-step"><span class="flow-index">3</span><p>Hatch learns &amp; improves</p></div>
+          <div class="flow-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          <div class="flow-step"><span class="flow-index">4</span><p>Carers get better support</p></div>
+        </div>
+
+        <div class="loop-return">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v4h4"/></svg>
+          <span>And the cycle continues as more carers connect.</span>
+        </div>
+
+        <div class="loop-branch">
+          <div class="loop-branch-connector"></div>
+          <div class="loop-branch-card">
+            <span class="eyebrow">Also flows outward, anonymised</span>
+            <h3>Collective insight for the sector</h3>
+            <p>Recurring patterns — never individual conversations — can also help government and the sector understand what carers need.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -236,12 +275,11 @@
     <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow">System impact</span>
-        <h2>Turning carer experience into insight.</h2>
+        <h2>What carers tell us, at scale.</h2>
         <p>
-          A trusted community produces honest conversation. Honest conversation produces
-          collective knowledge. That knowledge can help government, NGOs and the wider
-          out-of-home-care system understand what supports — and what undermines —
-          sustainable caring.
+          The same patterns that help Hatch support individual carers, gathered across
+          the whole community, can help government, NGOs and the wider out-of-home-care
+          system understand what supports — and what undermines — sustainable caring.
         </p>
       </div>
 
@@ -303,7 +341,7 @@
       <div class="section-head reveal">
         <span class="eyebrow">Work with Hatch</span>
         <h2>Help strengthen the community around carers.</h2>
-        <p>The carer story and the impact story come first. Everything below follows from them.</p>
+        <p>Hatch welcomes partnership with government, philanthropy and the corporate sector — support that helps carers, without ever handing a partner control of the community.</p>
       </div>
 
       <div class="partner-grid">

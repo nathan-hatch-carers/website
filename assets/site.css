@@ -161,7 +161,7 @@ section{ padding:84px 0; }
   border-radius:16px;
   overflow:hidden;
 }
-.value-list{ background:none; border:none; gap:20px; }
+.value-list{ background:none; border:none; gap:20px; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); }
 .partner-grid{ grid-template-columns:repeat(3,1fr); background:none; border:none; gap:24px; }
 
 .stat, .chapter-card, .value, .audience, .partner-card{
@@ -226,6 +226,24 @@ section{ padding:84px 0; }
   color:var(--green);
 }
 .flow-arrow svg{ width:20px; height:20px; }
+
+/* ---------- loop (value returns to carers first, then branches outward) ---------- */
+.loop-return{
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  margin-top:22px; color:var(--warm-grey); font-size:14px; font-weight:600;
+}
+.loop-return svg{ width:18px; height:18px; color:var(--green); flex:none; }
+.loop-branch{ margin-top:8px; display:flex; flex-direction:column; align-items:center; }
+.loop-branch-connector{ width:2px; height:30px; background:var(--line); }
+.loop-branch-card{
+  max-width:480px; text-align:center;
+  border:1px solid var(--line); border-radius:14px; padding:22px 26px;
+  background:var(--pale-blue);
+}
+.loop-branch-card .eyebrow{ justify-content:center; color:var(--deep-blue); }
+.loop-branch-card .eyebrow::before{ background:var(--deep-blue); }
+.loop-branch-card h3{ margin:10px 0 8px; font-size:17px; }
+.loop-branch-card p{ font-size:14.5px; color:var(--ink); margin:0 auto; max-width:44ch; }
 
 /* ---------- insight chain (dark) ---------- */
 .chain-dark{ background:var(--forest); color:#fff; }
