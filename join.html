@@ -292,8 +292,8 @@
             <input type="email" id="email" name="email_692d" autocomplete="email" required>
           </div>
           <div class="field">
-            <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone_8a7b" autocomplete="tel">
+            <label for="phone">Phone <span style="font-weight:400;color:var(--warm-grey)">(optional — Australian mobile or landline)</span></label>
+            <input type="tel" id="phone" name="phone_8a7b" autocomplete="tel" placeholder="e.g. 0412 345 678">
           </div>
           <div class="field">
             <label for="postcode">Postcode</label>
@@ -383,7 +383,7 @@
   document.getElementById('year').textContent = new Date().getFullYear();
 
   const navToggle = document.getElementById('navToggle');
-  const navLinks = document.getElementById('navLinks');
+  const navLinks  = document.getElementById('navLinks');
   navToggle.addEventListener('click', () => {
     const open = navLinks.classList.toggle('is-open');
     navToggle.setAttribute('aria-expanded', String(open));
@@ -395,6 +395,53 @@
 
   const WIX_ENDPOINT = "https://www.hatchcarers.com.au/_functions/submitCarerApplication";
 
+  // ─── Field sanitisers ────────────────────────────────────────────────────────
+
+  /**
+   * Phone: Wix requires E.164 international format (+61XXXXXXXXX).
+   * Accepts Australian mobiles (04xx) and landlines (02/03/07/08).
+   * Returns empty string if the field was left blank — Wix accepts that.
+   */
+  function sanitisePhone(raw) {
+    if (!raw) return '';
+    // Strip everything except digits and leading +
+    let p = raw.replace(/[\s\-().]/g, '');
+    if (!p) return '';
+    // Already in international format
+    if (p.startsWith('+')) return p;
+    // Australian local format: leading 0 → +61
+    if (p.startsWith('0')) return '+61' + p.slice(1);
+    // Bare 9-digit number (no leading 0, no +) — assume AU
+    return '+61' + p;
+  }
+
+  /**
+   * Date: Wix expects ISO 8601 (YYYY-MM-DD) or an empty string.
+   * The date input already produces that format, but guard against
+   * browser quirks returning undefined or null.
+   */
+  function sanitiseDate(raw) {
+    if (!raw || typeof raw !== 'string') return '';
+    // Validate it looks like a date before sending
+    return /^\d{4}-\d{2}-\d{2}$/.test(raw.trim()) ? raw.trim() : '';
+  }
+
+  /**
+   * Text: trim whitespace. Never send null/undefined — always a string.
+   */
+  function sanitiseText(raw) {
+    return (raw || '').trim();
+  }
+
+  /**
+   * Email: trim and lowercase.
+   */
+  function sanitiseEmail(raw) {
+    return (raw || '').trim().toLowerCase();
+  }
+
+  // ─── Conditional show/hide ───────────────────────────────────────────────────
+
   function bindRadioToggle(name, showValueMap) {
     document.querySelectorAll(`input[name="${name}"]`).forEach(input => {
       input.addEventListener('change', () => {
@@ -404,9 +451,10 @@
       });
     });
   }
+
   bindRadioToggle('authorised_nsw_carer', {
     'YES': document.getElementById('authorisedBlock'),
-    'NO': document.getElementById('notAuthorisedBlock')
+    'NO':  document.getElementById('notAuthorisedBlock')
   });
 
   const dcjBlock = document.getElementById('dcjBlock');
@@ -416,8 +464,10 @@
     });
   });
 
-  const form = document.getElementById('carerForm');
-  const status = document.getElementById('form-status');
+  // ─── Form submission ─────────────────────────────────────────────────────────
+
+  const form      = document.getElementById('carerForm');
+  const status    = document.getElementById('form-status');
   const submitBtn = document.getElementById('submitBtn');
 
   form.addEventListener('submit', async (e) => {
@@ -427,22 +477,38 @@
     status.textContent = 'Submitting…';
 
     const fd = new FormData(form);
+
     const payload = {
-      first_name_03a4: fd.get('first_name_03a4') || '',
-      last_name_f755: fd.get('last_name_f755') || '',
-      email_692d: fd.get('email_692d') || '',
-      phone_8a7b: fd.get('phone_8a7b') || '',
-      postcode: fd.get('postcode') || '',
-      authorised_nsw_carer: fd.get('authorised_nsw_carer') || '',
-      if_not_authorised_who_are_you: fd.get('if_not_authorised_who_are_you') || '',
-      when_were_you_authorised: fd.get('when_were_you_authorised') || '',
-      agency: fd.get('agency') || '',
+      // ── Personal details ──────────────────────────────────────────────────
+      first_name_03a4: sanitiseText(fd.get('first_name_03a4')),
+      last_name_f755:  sanitiseText(fd.get('last_name_f755')),
+      email_692d:      sanitiseEmail(fd.get('email_692d')),
+
+      // Phone: convert to E.164 (+61…) so Wix accepts it; empty string if blank
+      phone_8a7b: sanitisePhone(fd.get('phone_8a7b')),
+
+      // Postcode: keep as plain string, no leading zeros stripped
+      postcode: sanitiseText(fd.get('postcode')),
+
+      // ── Authorisation ─────────────────────────────────────────────────────
+      authorised_nsw_carer:       sanitiseText(fd.get('authorised_nsw_carer')),
+      if_not_authorised_who_are_you: sanitiseText(fd.get('if_not_authorised_who_are_you')),
+
+      // Date: ISO 8601 (YYYY-MM-DD) or empty string — never null
+      when_were_you_authorised: sanitiseDate(fd.get('when_were_you_authorised')),
+
+      agency:         sanitiseText(fd.get('agency')),
       form_field_a9ad: document.getElementById('proofAvailable').checked,
+
+      // ── Sector employment ─────────────────────────────────────────────────
+      // Wix expects an array for checkbox-group fields
       are_you_currently_employed_by_dcj_or_a_non_government_oohc_provi:
         document.getElementById('employedDcjYes').checked ? ['Yes'] : [],
-      who_is_your_employer: fd.get('who_is_your_employer') || '',
-      what_is_your_role_title: fd.get('what_is_your_role_title') || '',
-      do_you_work_with_foster_and_kinship_carers_in_your_role_if_so_in: fd.get('do_you_work_with_foster_and_kinship_carers_in_your_role_if_so_in') || ''
+
+      who_is_your_employer: sanitiseText(fd.get('who_is_your_employer')),
+      what_is_your_role_title: sanitiseText(fd.get('what_is_your_role_title')),
+      do_you_work_with_foster_and_kinship_carers_in_your_role_if_so_in:
+        sanitiseText(fd.get('do_you_work_with_foster_and_kinship_carers_in_your_role_if_so_in'))
     };
 
     try {
@@ -451,14 +517,17 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
+
       if (!res.ok) throw new Error('Request failed: ' + res.status);
+
       status.dataset.state = 'success';
       status.textContent = "Thanks — your application has been submitted.";
       form.reset();
       document.querySelectorAll('.conditional').forEach(el => el.classList.remove('is-visible'));
+
     } catch (err) {
       status.dataset.state = 'error';
-      status.textContent = "Something went wrong submitting this — please email support@hatchcarers.com.au directly for now.";
+      status.textContent = "Something went wrong — please email support@hatchcarers.com.au directly for now.";
       console.error(err);
     } finally {
       submitBtn.disabled = false;
