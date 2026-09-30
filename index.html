@@ -28,6 +28,32 @@
   .hero-lede{ margin:24px 0 0; font-size:18.5px; color:var(--ink); max-width:46ch; line-height:1.6; }
   .hero-ctas{ display:flex; gap:14px; margin-top:34px; flex-wrap:wrap; }
 
+  /* ---------- hero photo (two-blob treatment, as approved) ---------- */
+  .hero-blob-shadow{
+    position:absolute;
+    top:10%; left:9%; right:-7%; bottom:-7%;
+    background:var(--forest);
+    border-radius:58% 42% 39% 61% / 61% 44% 56% 39%;
+    transform:rotate(-7deg);
+  }
+  .hero-blob-photo{
+    position:absolute;
+    top:-4%; left:-4%; right:11%; bottom:11%;
+    border-radius:42% 58% 61% 39% / 39% 61% 42% 58%;
+    overflow:hidden;
+    transform:rotate(4deg);
+    box-shadow:0 18px 40px -18px rgba(19,113,70,0.45);
+  }
+  .hero-blob-photo img{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover; object-position:50% 32%;
+    transform:rotate(-4deg) scale(1.22);
+  }
+
+  /* ---------- video section ---------- */
+  .video-frame{ max-width:900px; margin:44px auto 0; }
+
   @media (max-width: 980px){
     .hero-grid{ grid-template-columns:1fr; }
     .organic-figure{ max-width:320px; margin:0 auto; order:-1; }
@@ -87,16 +113,28 @@
       <div class="organic-figure">
         <div class="hero-visual">
           <div class="hero-blob-shadow"></div>
-          <div class="hero-blob-media">
-            <video id="heroVideo" preload="metadata" playsinline controls
-              poster=""
-              src="https://video.wixstatic.com/video/26561e_5443d78ac1c54747a25dea208c7080bf/1080p/mp4/file.mp4">
-            </video>
-            <button class="hero-play" id="heroPlay" aria-label="Play video: hear from the Hatch community" type="button">
-              <svg viewBox="0 0 24 24" fill="#fff"><circle cx="12" cy="12" r="11" fill="rgba(19,38,32,0.55)"/><path d="M10 8.5v7l6-3.5-6-3.5Z"/></svg>
-            </button>
+          <div class="hero-blob-photo">
+            <img src="assets/hatch-hero-photo.jpg" alt="">
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= VIDEO ================= -->
+  <section class="video-section reveal" style="background:var(--sage-tint); border-bottom:1px solid var(--line);">
+    <div class="wrap" style="text-align:center;">
+      <span class="eyebrow" style="justify-content:center;">See it in their own words</span>
+      <h2>Hear directly from the community.</h2>
+      <div class="video-frame">
+        <video
+          controls
+          preload="metadata"
+          playsinline
+          src="https://video.wixstatic.com/video/26561e_5443d78ac1c54747a25dea208c7080bf/1080p/mp4/file.mp4">
+          Your browser doesn't support embedded video.
+          <a href="https://video.wixstatic.com/video/26561e_5443d78ac1c54747a25dea208c7080bf/1080p/mp4/file.mp4">Watch it here instead.</a>
+        </video>
       </div>
     </div>
   </section>
